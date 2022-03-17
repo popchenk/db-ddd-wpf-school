@@ -16,29 +16,29 @@ namespace WpfDbApplication.Model
 
         public string name { get; }
 
-        public Bank(string name)
+        public Bank(string name, AccountList accountList)
         {
 
             this.name = name;
 
-            accountList = new AccountList();
+            this.accountList = accountList;
 
         }
 
 
-        public IEnumerable<Account> GetBankAccountsForUser(string email)
+        //public IEnumerable<Account> GetBankAccountsForUser(string email)
+        //{
+        //    return accountList.GetBankAccountsForUser(email);
+        //}
+
+        public async Task<IEnumerable<Account>> GetAllAccounts()
         {
-            return accountList.GetBankAccountsForUser(email);
+            return await accountList.GetAllAccounts();
         }
 
-        public IEnumerable<Account> GetAllAccounts()
+        public async Task createAccount(Account account)
         {
-            return accountList.GetAllAccounts();
-        }
-
-        public void createAccount(Account account)
-        {
-            accountList.createAccount(account);
+            await accountList.createAccount(account);
         }
 
     }

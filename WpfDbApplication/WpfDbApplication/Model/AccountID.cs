@@ -19,6 +19,10 @@ namespace WpfDbApplication.Model
             this.state = state;
         }
 
+        public AccountID()
+        {
+        }
+
         public override string ToString()
         {
             return $"{state}{uuid}";

@@ -19,9 +19,9 @@ namespace WpfDbApplication.Model
         public decimal money { get; }
 
 
-        public Account(AccountID accountID, string email, decimal money)
+        public Account(AccountID accountID, string email, decimal money, Card card)
         {
-            this.accountCard = new Card();
+            this.accountCard = card;
             this.accountID = accountID;
             this.email = email;
             this.money = money;

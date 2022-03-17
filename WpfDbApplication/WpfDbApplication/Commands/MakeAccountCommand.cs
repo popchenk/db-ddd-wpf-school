@@ -12,7 +12,7 @@ using WpfDbApplication.ViewModels;
 
 namespace WpfDbApplication.Commands
 {
-    public class MakeAccountCommand : CommandBase
+    public class MakeAccountCommand : AsyncCommandBase
     {
         private readonly MakeAccountViewModel makeAccountViewModel;
         private readonly Bank bank;
@@ -39,18 +39,19 @@ namespace WpfDbApplication.Commands
             }
         }
 
-        public override void Execute(object parameter)
+        public override async Task ExecuteAsync(object parameter)
         {
 
             Account account = new Account(
                 new AccountID(makeAccountViewModel.nationalityBinding),
                 makeAccountViewModel.emailBinding,
-                makeAccountViewModel.startMoneyBinding
+                makeAccountViewModel.startMoneyBinding,
+                new Card(makeAccountViewModel.cardNumBinding, makeAccountViewModel.cvvBinding, makeAccountViewModel.expDateBinding)
                 );
 
             try
             {
-                bank.createAccount(account);
+                await bank.createAccount(account);
                 MessageBox.Show("Account added successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 AccountViewNavigationService.Navigate();
@@ -59,6 +60,10 @@ namespace WpfDbApplication.Commands
             catch( AccountAlreadyExistsException exception)
             {
                 MessageBox.Show("This account ID is already taken", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("Failed to create account."+e.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
 

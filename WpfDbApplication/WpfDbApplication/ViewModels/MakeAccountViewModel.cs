@@ -57,6 +57,49 @@ namespace WpfDbApplication.ViewModels
 
         }
 
+        private string cardNum;
+
+        public string cardNumBinding
+        {
+
+            get { return cardNum; }
+            set
+            {
+                cardNum = value;
+                OnPropertyChanged(nameof(cardNumBinding));
+            }
+
+        }
+
+
+        private int cvv;
+
+        public int cvvBinding
+        {
+
+            get { return cvv; }
+            set
+            {
+                cvv = value;
+                OnPropertyChanged(nameof(cvvBinding));
+            }
+
+        }
+
+        private string expDate;
+
+        public string expDateBinding
+        {
+
+            get { return expDate; }
+            set
+            {
+                expDate = value;
+                OnPropertyChanged(nameof(expDateBinding));
+            }
+
+        }
+
         public ICommand SubmitCommand { get; }
         public ICommand CancelCommand { get; }
 

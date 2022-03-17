@@ -1,15 +1,21 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using WpfDbApplication.DbContexts;
 using WpfDbApplication.Exceptions;
 using WpfDbApplication.Model;
 using WpfDbApplication.Services;
 using WpfDbApplication.Stores;
 using WpfDbApplication.ViewModels;
+using WpfDbApplication.Services.AccountProviders;
+using WpfDbApplication.Services.AccountCreators;
+using WpfDbApplication.Services.AccountConflictValidators;
 
 namespace WpfDbApplication
 {
@@ -18,19 +24,34 @@ namespace WpfDbApplication
     /// </summary>
     public partial class App : Application
     {
-
+        //move to cfg file
+        private const string CONNECTION_STRING = "server=wpf-db.c69xzkzvbddr.us-east-1.rds.amazonaws.com;database=BankSystem;user id=admin;password=7dLjMaYjdaPmhDd6EodO";
         private readonly Bank bank;
 
         private readonly NavigationStore navigationStore;
 
+        private readonly BankSystemContextFactory bankSystemContextFactory;
+
         public App()
         {
-            this.bank = new Bank("KB");
+            bankSystemContextFactory = new BankSystemContextFactory(CONNECTION_STRING);
+            IAccountProvider accountProvider = new DatabaseAccountProvider(bankSystemContextFactory);
+            IAccountCreator accountCreator = new DatabaseAccountCreator(bankSystemContextFactory);
+            IAccountConflictValidator accountConflictValidator = new DatabaseAccountConflictValidator(bankSystemContextFactory);
+            AccountList accountList = new AccountList(accountProvider, accountCreator, accountConflictValidator);
+
+            this.bank = new Bank("KB", accountList);
             this.navigationStore = new NavigationStore();
         }
 
         protected override void OnStartup(StartupEventArgs e)
         {
+            using (BankSystemContext dbContext = new BankSystemContext())
+            {
+                dbContext.Database.Migrate();
+            }
+
+
 
             navigationStore.currentViewModelBinding = CreateAccountViewModel();
 
@@ -52,34 +73,9 @@ namespace WpfDbApplication
 
         private ListAccountsViewModel CreateAccountViewModel()
         {
-            return new ListAccountsViewModel(bank, new NavigationService(navigationStore, CreateMakeAccountViewModel));
+            return ListAccountsViewModel.LoadViewModel(bank, new NavigationService(navigationStore, CreateMakeAccountViewModel));
         }
 
-        private void tests()
-        {
-            Bank bank = new Bank("KB");
-
-            try
-            {
-
-                bank.createAccount(new Account(new AccountID("CZ"), "michal.popcak@seznam.cz", 1000));
-
-                bank.createAccount(new Account(new AccountID("DE"), "michal.popcak@seznam.cz", 5000));
-
-            }
-            catch (AccountAlreadyExistsException exception)
-            {
-
-
-
-            }
-
-
-
-            IEnumerable<Account> accounts = bank.GetBankAccountsForUser("michal.popcak@seznam.cz");
-
-
-        }
 
     }
 }

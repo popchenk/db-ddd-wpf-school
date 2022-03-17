@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WpfDbApplication.Exceptions;
+using WpfDbApplication.Services.AccountCreators;
+using WpfDbApplication.Services.AccountProviders;
+using WpfDbApplication.Services.AccountConflictValidators;
 
 namespace WpfDbApplication.Model
 {
@@ -11,34 +14,40 @@ namespace WpfDbApplication.Model
     public class AccountList
     {
 
-        private readonly List<Account> bankAccounts;
+        private readonly IAccountProvider accountProvider;
+        private readonly IAccountCreator accountCreator;
+        private readonly IAccountConflictValidator accountConflictValidator;
 
-        public AccountList()
+        public AccountList(IAccountProvider accountProvider, IAccountCreator accountCreator, IAccountConflictValidator accountConflictValidator)
         {
-            bankAccounts = new List<Account>();
+            this.accountProvider = accountProvider;
+            this.accountCreator = accountCreator;
+            this.accountConflictValidator = accountConflictValidator;
         }
 
-        public IEnumerable<Account> GetBankAccountsForUser(string email)
+        //public IEnumerable<Account> GetBankAccountsForUser(string email)
+        //{
+            //return bankAccounts.Where(r => r.email == email);
+        //    return null;
+        //}
+
+        public async Task<IEnumerable<Account>> GetAllAccounts()
         {
-            return bankAccounts.Where(r => r.email == email);
+            return await accountProvider.GetAllAccounts();
         }
 
-        public IEnumerable<Account> GetAllAccounts()
+        public async Task createAccount(Account account)
         {
-            return bankAccounts;
-        }
 
-        public void createAccount(Account account)
-        {
-            foreach(Account existingAccount in GetBankAccountsForUser(account.email))
+            Account conflictingAccount = await accountConflictValidator.GetConflictingAccount(account);
+
+            if(conflictingAccount != null)
             {
-                //just in case we get the same uuid generated (its not 100% unique)
-                if (existingAccount.alreadyCreated(account))
-                {
-                    throw new AccountAlreadyExistsException(existingAccount, account);
-                }
+                throw new AccountAlreadyExistsException(conflictingAccount, account);
+
             }
-            bankAccounts.Add(account);
+
+            await accountCreator.CreateAccount(account);
 
         }
 
