@@ -15,29 +15,32 @@ namespace WpfDbApplication.ViewModels
     public class ListAccountsViewModel : ViewModelBase
     {
 
+        //observable collection so it gets instantly updated in the view
         private readonly ObservableCollection<AccountViewModel> accounts;
 
         public ICommand MakeAccountCommand { get; }
+        public ICommand CreditCardCommand { get; }
 
         public ICommand LoadAccountsCommand { get; }
 
         // we dont need the whole observable collection so lets encapsulate it into ienumerable
         public IEnumerable<AccountViewModel> accountsEnc => accounts;
 
-        public ListAccountsViewModel(Bank bank, NavigationService makeAccountNavigationService)
+        public ListAccountsViewModel(Bank bank, NavigationService makeAccountNavigationService, NavigationService creditCardNavigationService)
         {
 
             accounts = new ObservableCollection<AccountViewModel>();
 
             MakeAccountCommand = new NavigateCommand(makeAccountNavigationService);
+            CreditCardCommand = new NavigateCommand(creditCardNavigationService);
             LoadAccountsCommand = new LoadAccountsCommand(this, bank);
 
 
         }
 
-        public static ListAccountsViewModel LoadViewModel(Bank bank, NavigationService makeAccountNavigationService)
+        public static ListAccountsViewModel LoadViewModel(Bank bank, NavigationService makeAccountNavigationService, NavigationService creditCardNavigationService)
         {
-            ListAccountsViewModel viewModel = new ListAccountsViewModel(bank, makeAccountNavigationService);
+            ListAccountsViewModel viewModel = new ListAccountsViewModel(bank, makeAccountNavigationService, creditCardNavigationService);
 
             viewModel.LoadAccountsCommand.Execute(null);
 

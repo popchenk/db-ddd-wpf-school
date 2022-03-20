@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v5.0": {
       "WpfDbApplication/1.0.0": {
         "dependencies": {
+          "MahApps.Metro": "2.4.9",
           "Microsoft.EntityFrameworkCore": "5.0.14",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.14",
           "Microsoft.EntityFrameworkCore.Tools": "5.0.14",
@@ -23,6 +24,18 @@
           "lib/netstandard2.0/BouncyCastle.Crypto.dll": {
             "assemblyVersion": "1.8.5.0",
             "fileVersion": "1.8.19031.1"
+          }
+        }
+      },
+      "ControlzEx/4.4.0": {
+        "dependencies": {
+          "Microsoft.Xaml.Behaviors.Wpf": "1.1.19",
+          "System.Text.Json": "4.7.2"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/ControlzEx.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.4.0.50"
           }
         }
       },
@@ -77,6 +90,22 @@
           "lib/netstandard2.0/K4os.Hash.xxHash.dll": {
             "assemblyVersion": "1.0.6.0",
             "fileVersion": "1.0.6.0"
+          }
+        }
+      },
+      "MahApps.Metro/2.4.9": {
+        "dependencies": {
+          "ControlzEx": "4.4.0"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/MahApps.Metro.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.4.9.2"
+          }
+        },
+        "resources": {
+          "lib/netcoreapp3.1/de/MahApps.Metro.resources.dll": {
+            "locale": "de"
           }
         }
       },
@@ -414,6 +443,14 @@
       "Microsoft.Win32.SystemEvents/4.7.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "3.1.0"
+        }
+      },
+      "Microsoft.Xaml.Behaviors.Wpf/1.1.19": {
+        "runtime": {
+          "lib/netcoreapp3.0/Microsoft.Xaml.Behaviors.dll": {
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.19.35512"
+          }
         }
       },
       "MySql.Data/8.0.28": {
@@ -1011,6 +1048,7 @@
           "System.Text.Encoding": "4.3.0"
         }
       },
+      "System.Text.Json/4.7.2": {},
       "System.Text.RegularExpressions/4.3.0": {
         "dependencies": {
           "System.Runtime": "4.3.0"
@@ -1126,6 +1164,13 @@
       "path": "bouncycastle.netcore/1.8.5",
       "hashPath": "bouncycastle.netcore.1.8.5.nupkg.sha512"
     },
+    "ControlzEx/4.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-pZ5z4hYWwE4R13UMCVs6vII//nL7hz+Nwn4oJlnsZJRGqJNy6Z9KnJiTZfly6lKFu0pMc1aWBZpx+VqFTQKP1Q==",
+      "path": "controlzex/4.4.0",
+      "hashPath": "controlzex.4.4.0.nupkg.sha512"
+    },
     "Google.Protobuf/3.14.0": {
       "type": "package",
       "serviceable": true,
@@ -1160,6 +1205,13 @@
       "sha512": "sha512-jCfNP0inx1sGcP3KSbpiDEH3km2e1sVBjMfKo+V92jr1dL4ZYgA1uhRMl1wAtdGZcbObXIikKqtVlgx3j/CW6g==",
       "path": "k4os.hash.xxhash/1.0.6",
       "hashPath": "k4os.hash.xxhash.1.0.6.nupkg.sha512"
+    },
+    "MahApps.Metro/2.4.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-eMTkg6TBnCwHzszw7CP+pxsBeB4ZMsJFiTJJoifUVBysRyEenzzR+TKQJuMvvKK6KzvLxwHmJsFhi9o5p4vxhQ==",
+      "path": "mahapps.metro/2.4.9",
+      "hashPath": "mahapps.metro.2.4.9.nupkg.sha512"
     },
     "Microsoft.CSharp/4.7.0": {
       "type": "package",
@@ -1363,6 +1415,13 @@
       "sha512": "sha512-mtVirZr++rq+XCDITMUdnETD59XoeMxSpLRIII7JRI6Yj0LEDiO1pPn0ktlnIj12Ix8bfvQqQDMMIF9wC98oCA==",
       "path": "microsoft.win32.systemevents/4.7.0",
       "hashPath": "microsoft.win32.systemevents.4.7.0.nupkg.sha512"
+    },
+    "Microsoft.Xaml.Behaviors.Wpf/1.1.19": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5sPWkbqImc2t1aQwIfJcKsUo7tOg1Tr8+6xVzZJB56Nzt4u9NlpcLofgdX/aRYpPKdWDA3U23Akw1KQzU5e82g==",
+      "path": "microsoft.xaml.behaviors.wpf/1.1.19",
+      "hashPath": "microsoft.xaml.behaviors.wpf.1.1.19.nupkg.sha512"
     },
     "MySql.Data/8.0.28": {
       "type": "package",
@@ -1818,6 +1877,13 @@
       "sha512": "sha512-YVMK0Bt/A43RmwizJoZ22ei2nmrhobgeiYwFzC4YAN+nue8RF6djXDMog0UCn+brerQoYVyaS+ghy9P/MUVcmw==",
       "path": "system.text.encoding.extensions/4.3.0",
       "hashPath": "system.text.encoding.extensions.4.3.0.nupkg.sha512"
+    },
+    "System.Text.Json/4.7.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-TcMd95wcrubm9nHvJEQs70rC0H/8omiSGGpU4FQ/ZA1URIqD4pjmFJh2Mfv1yH1eHgJDWTi2hMDXwTET+zOOyg==",
+      "path": "system.text.json/4.7.2",
+      "hashPath": "system.text.json.4.7.2.nupkg.sha512"
     },
     "System.Text.RegularExpressions/4.3.0": {
       "type": "package",

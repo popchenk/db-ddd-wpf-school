@@ -12,15 +12,21 @@ namespace WpfDbApplication.Services
     {
 
         private readonly NavigationStore navigationStore;
+
         private readonly Func<ViewModelBase> createViewModel;
+
+        public string param;
 
         public NavigationService(NavigationStore navigationStore, Func<ViewModelBase> createViewModel)
         {
             this.navigationStore = navigationStore;
             this.createViewModel = createViewModel;
+            this.param = navigationStore.passingParameterBinding;
         }
-        public void Navigate()
+        public void Navigate(object parameter = null)
         {
+            if(parameter != null) navigationStore.passingParameterBinding = (string)parameter;
+
             navigationStore.currentViewModelBinding = createViewModel();
         }
 

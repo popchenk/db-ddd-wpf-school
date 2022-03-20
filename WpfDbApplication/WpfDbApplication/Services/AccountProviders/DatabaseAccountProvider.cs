@@ -24,10 +24,10 @@ namespace WpfDbApplication.Services.AccountProviders
         {
             using (BankSystemContext context = dbContextFactory.CreateDbContext())
             {
-                if(context.AccountDtos != null)
+                if (context.AccountDtos != null)
                 {
                     IEnumerable<AccountDto> AccountDtos = await context.AccountDtos.ToListAsync();
-                    if(AccountDtos != null && AccountDtos.Select(r => GeneralHelper.ToAccount(r)) != null)
+                    if (AccountDtos != null && AccountDtos.Select(r => GeneralHelper.ToAccount(r)) != null)
                     {
                         return AccountDtos.Select(r => GeneralHelper.ToAccount(r));
                     }
@@ -39,5 +39,21 @@ namespace WpfDbApplication.Services.AccountProviders
 
         }
 
+        public async Task<Account> GetAccountByUuid(string uuid)
+        {
+            using (BankSystemContext context = dbContextFactory.CreateDbContext())
+            {
+                if (context.AccountDtos != null)
+                {
+                    //remove nationality from accountID
+                    uuid = uuid.Remove(0, 2);
+                    AccountDto AccountDto = await context.AccountDtos.FindAsync(uuid);
+                    CardDto cardDto = await context.CardDtos.FindAsync(AccountDto.CardId);
+                    return GeneralHelper.ToAccount(AccountDto, cardDto);
+                }
+
+            }
+            return null;
+        }
     }
 }

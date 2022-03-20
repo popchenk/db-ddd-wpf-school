@@ -24,6 +24,7 @@ namespace WpfDbApplication.Services.AccountCreators
             {
                 AccountDto AccountDto = ToAccountDto(account);
                 context.AccountDtos.Add(AccountDto);
+                context.CardDtos.Add(ToCardDto(account.card));
                 await context.SaveChangesAsync();
             }
         }
@@ -39,5 +40,16 @@ namespace WpfDbApplication.Services.AccountCreators
                 Money = account.money,
             };
         }
+
+        private CardDto ToCardDto(Card card)
+        {
+            return new CardDto()
+            {
+                cardNum = card.cardNum,
+                cvv = card.cvv,
+                expDate = card.expiration
+            };
+        }
+
     }
 }

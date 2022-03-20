@@ -7,6 +7,7 @@ using WpfDbApplication.Exceptions;
 using WpfDbApplication.Services.AccountCreators;
 using WpfDbApplication.Services.AccountProviders;
 using WpfDbApplication.Services.AccountConflictValidators;
+using WpfDbApplication.Services.AccountUpdaters;
 
 namespace WpfDbApplication.Model
 {
@@ -17,12 +18,14 @@ namespace WpfDbApplication.Model
         private readonly IAccountProvider accountProvider;
         private readonly IAccountCreator accountCreator;
         private readonly IAccountConflictValidator accountConflictValidator;
+        private readonly IAccountUpdater accountUpdater;
 
-        public AccountList(IAccountProvider accountProvider, IAccountCreator accountCreator, IAccountConflictValidator accountConflictValidator)
+        public AccountList(IAccountProvider accountProvider, IAccountCreator accountCreator, IAccountConflictValidator accountConflictValidator, IAccountUpdater accountUpdater)
         {
             this.accountProvider = accountProvider;
             this.accountCreator = accountCreator;
             this.accountConflictValidator = accountConflictValidator;
+            this.accountUpdater = accountUpdater;
         }
 
         //public IEnumerable<Account> GetBankAccountsForUser(string email)
@@ -34,6 +37,11 @@ namespace WpfDbApplication.Model
         public async Task<IEnumerable<Account>> GetAllAccounts()
         {
             return await accountProvider.GetAllAccounts();
+        }
+
+        public async Task<Account> GetAccountByUuid(string uuid)
+        {
+            return await accountProvider.GetAccountByUuid(uuid);
         }
 
         public async Task createAccount(Account account)
@@ -48,6 +56,13 @@ namespace WpfDbApplication.Model
             }
 
             await accountCreator.CreateAccount(account);
+
+        }
+
+        public async Task sendMoneyToAccount(string uuid, decimal money)
+        {
+
+           await accountUpdater.UpdateAccountMoney(uuid, money);
 
         }
 

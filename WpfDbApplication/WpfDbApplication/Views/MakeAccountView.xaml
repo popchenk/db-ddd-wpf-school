@@ -18,7 +18,7 @@
             
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0"
-                   Style="{StaticResource header}"
+                   
                    Text="Crate an account"/>
 
         <Grid Grid.Row="1" Margin="0 25 0 0">

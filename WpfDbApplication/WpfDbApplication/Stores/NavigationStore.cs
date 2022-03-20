@@ -22,6 +22,17 @@ namespace WpfDbApplication.Stores
             }
         }
 
+        private string passingParameter;
+
+        public string passingParameterBinding
+        {
+            get => passingParameter;
+            set
+            {
+                passingParameter = value;
+            }
+        }
+
         public event Action currentViewModelChanged;
 
         private void OnCurrentViewModelChanged()

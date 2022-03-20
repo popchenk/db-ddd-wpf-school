@@ -9,7 +9,7 @@ namespace WpfDbApplication.Model
     public class Account
     {
 
-        private readonly Card accountCard;
+        public Card card;
 
         // accountID can change in the future
         public AccountID accountID { get; }
@@ -21,7 +21,7 @@ namespace WpfDbApplication.Model
 
         public Account(AccountID accountID, string email, decimal money, Card card)
         {
-            this.accountCard = card;
+            this.card = card;
             this.accountID = accountID;
             this.email = email;
             this.money = money;

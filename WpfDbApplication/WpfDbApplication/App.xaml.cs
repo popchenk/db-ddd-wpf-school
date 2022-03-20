@@ -16,6 +16,7 @@ using WpfDbApplication.ViewModels;
 using WpfDbApplication.Services.AccountProviders;
 using WpfDbApplication.Services.AccountCreators;
 using WpfDbApplication.Services.AccountConflictValidators;
+using WpfDbApplication.Services.AccountUpdaters;
 
 namespace WpfDbApplication
 {
@@ -38,7 +39,8 @@ namespace WpfDbApplication
             IAccountProvider accountProvider = new DatabaseAccountProvider(bankSystemContextFactory);
             IAccountCreator accountCreator = new DatabaseAccountCreator(bankSystemContextFactory);
             IAccountConflictValidator accountConflictValidator = new DatabaseAccountConflictValidator(bankSystemContextFactory);
-            AccountList accountList = new AccountList(accountProvider, accountCreator, accountConflictValidator);
+            IAccountUpdater accountUpdater = new DatabaseAccountUpdater(bankSystemContextFactory);
+            AccountList accountList = new AccountList(accountProvider, accountCreator, accountConflictValidator, accountUpdater);
 
             this.bank = new Bank("KB", accountList);
             this.navigationStore = new NavigationStore();
@@ -73,7 +75,12 @@ namespace WpfDbApplication
 
         private ListAccountsViewModel CreateAccountViewModel()
         {
-            return ListAccountsViewModel.LoadViewModel(bank, new NavigationService(navigationStore, CreateMakeAccountViewModel));
+            return ListAccountsViewModel.LoadViewModel(bank, new NavigationService(navigationStore, CreateMakeAccountViewModel), new NavigationService(navigationStore, CreateCreditCardViewModel));
+        }
+
+        private CreditCardViewModel CreateCreditCardViewModel()
+        {
+            return new CreditCardViewModel(bank, new NavigationService(navigationStore, CreateAccountViewModel));
         }
 
 

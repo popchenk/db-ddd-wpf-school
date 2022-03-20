@@ -16,6 +16,7 @@ namespace WpfDbApplication.ViewModels
         public string accountID => account.accountID?.ToString();
         public string email => account.email;
         public decimal money => account.money;
+        public Card card => account.card;
 
         public AccountViewModel(Account account)
         {

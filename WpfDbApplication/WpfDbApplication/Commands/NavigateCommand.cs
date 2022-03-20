@@ -23,7 +23,8 @@ namespace WpfDbApplication.Commands
 
         public override void Execute(object parameter)
         {
-            navigationService.Navigate();
+
+            navigationService.Navigate(parameter);
         }
     }
 }

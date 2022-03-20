@@ -11,6 +11,7 @@ namespace WpfDbApplication.Services.AccountProviders
     {
 
         Task<IEnumerable<Account>> GetAllAccounts();
+        Task<Account> GetAccountByUuid(string uuid);
 
     }
 }

@@ -12,10 +12,10 @@ namespace WpfDbApplication.Services.Helpers
     {
 
         //cardDto -> dto. cardNum etc
-        public static Account ToAccount(AccountDto dto)
+        public static Account ToAccount(AccountDto dto, CardDto cardDto = null)
         {
             //new Card(cdto.cardNum, cdto.cvv, cdto.expDate)
-            return new Account(new AccountID(dto.Nationality), dto.Email, (decimal)dto.Money, null);
+            return new Account(new AccountID(dto.Nationality, dto.Uuid), dto.Email, (decimal)dto.Money, (cardDto != null) ? new Card(cardDto.cardNum, cardDto.cvv, cardDto.expDate) : null);
         }
 
     }

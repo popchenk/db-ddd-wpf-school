@@ -36,9 +36,19 @@ namespace WpfDbApplication.Model
             return await accountList.GetAllAccounts();
         }
 
+        public async Task<Account> GetAccountByUuid(string uuid)
+        {
+            return await accountList.GetAccountByUuid(uuid);
+        }
+
         public async Task createAccount(Account account)
         {
             await accountList.createAccount(account);
+        }
+
+        public async Task sendMoneyToAccount(string uuid, decimal money)
+        {
+            await accountList.sendMoneyToAccount(uuid, money);
         }
 
     }

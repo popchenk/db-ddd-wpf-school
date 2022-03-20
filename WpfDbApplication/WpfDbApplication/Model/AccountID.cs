@@ -11,12 +11,13 @@ namespace WpfDbApplication.Model
 
         public string state;
 
-        public string uuid = Guid.NewGuid().ToString();
+        public string uuid;
 
         // example : CZ057A98777bD9820
-        public AccountID(string state)
+        public AccountID(string state, string uuid = null)
         {
             this.state = state;
+            this.uuid = !String.IsNullOrEmpty(uuid) ? uuid : Guid.NewGuid().ToString();
         }
 
         public AccountID()
