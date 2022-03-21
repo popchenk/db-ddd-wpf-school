@@ -22,14 +22,17 @@ namespace WpfDbApplication.Services.AccountCreators
         {
             using (BankSystemContext context = dbContextFactory.CreateDbContext())
             {
-                AccountDto AccountDto = ToAccountDto(account);
+                CardDto cardDto = ToCardDto(account.card);
+                context.CardDtos.Add(cardDto);
+                //we need to save it so the db will generate pk
+                await context.SaveChangesAsync();
+                AccountDto AccountDto = ToAccountDto(account, cardDto.id);
                 context.AccountDtos.Add(AccountDto);
-                context.CardDtos.Add(ToCardDto(account.card));
                 await context.SaveChangesAsync();
             }
         }
 
-        private AccountDto ToAccountDto(Account account)
+        private AccountDto ToAccountDto(Account account, int cardId)
         {
             return new AccountDto()
             {
@@ -38,6 +41,7 @@ namespace WpfDbApplication.Services.AccountCreators
                 Uuid = account.accountID.uuid,
                 Email = account.email,
                 Money = account.money,
+                CardId = cardId
             };
         }
 

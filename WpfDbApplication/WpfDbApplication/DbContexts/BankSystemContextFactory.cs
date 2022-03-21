@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,10 +8,15 @@ using System.Threading.Tasks;
 
 namespace WpfDbApplication.DbContexts
 {
-    public class BankSystemContextFactory
+    public class BankSystemContextFactory : IDesignTimeDbContextFactory<BankSystemContext>
     {
 
         private readonly string connectionString;
+
+        public BankSystemContextFactory()
+        {
+
+        }
 
         public BankSystemContextFactory(string connectionString)
         {
@@ -19,11 +25,15 @@ namespace WpfDbApplication.DbContexts
 
         public BankSystemContext CreateDbContext()
         {
-            DbContextOptionsBuilder optionsBuilder = new DbContextOptionsBuilder<BankSystemContext>();
-            DbContextOptions options = optionsBuilder.UseMySql(connectionString, Microsoft.EntityFrameworkCore.ServerVersion.Parse("10.5.13-mariadb")).Options;
-            return new BankSystemContext((DbContextOptions<BankSystemContext>)options);
+            DbContextOptions options = new DbContextOptionsBuilder().UseSqlite("Data Source=bank.db").Options;
+            return new BankSystemContext(options);
             
         }
 
+        public BankSystemContext CreateDbContext(string[] args)
+        {
+            DbContextOptions options = new DbContextOptionsBuilder().UseSqlite("Data Source=bank.db").Options;
+            return new BankSystemContext(options);
+        }
     }
 }

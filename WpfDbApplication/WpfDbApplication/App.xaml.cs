@@ -26,7 +26,7 @@ namespace WpfDbApplication
     public partial class App : Application
     {
         //move to cfg file
-        private const string CONNECTION_STRING = "server=wpf-db.c69xzkzvbddr.us-east-1.rds.amazonaws.com;database=BankSystem;user id=admin;password=7dLjMaYjdaPmhDd6EodO";
+        private const string CONNECTION_STRING = "Data Source=bank.db";
         private readonly Bank bank;
 
         private readonly NavigationStore navigationStore;
@@ -48,7 +48,8 @@ namespace WpfDbApplication
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            using (BankSystemContext dbContext = new BankSystemContext())
+            DbContextOptions options = new DbContextOptionsBuilder().UseSqlite(CONNECTION_STRING).Options;
+            using (BankSystemContext dbContext = new BankSystemContext(options))
             {
                 dbContext.Database.Migrate();
             }

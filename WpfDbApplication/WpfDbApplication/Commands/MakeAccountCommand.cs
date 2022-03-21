@@ -63,7 +63,7 @@ namespace WpfDbApplication.Commands
             }
             catch(Exception e)
             {
-                MessageBox.Show("Failed to create account."+e.Message + e.InnerException.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Failed to create account."+e.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
 
