@@ -16,7 +16,7 @@ namespace WpfDbApplication.Model
 
         public string email { get; }
 
-        public decimal money { get; }
+        public decimal money { get; set; }
 
 
         public Account(AccountID accountID, string email, decimal money, Card card)

@@ -9,6 +9,7 @@ namespace WpfDbApplication.Model
 {
     public class Card
     {
+
         public string cardNum { get; }
         public int cvv { get; }
         public string expiration { get; }

@@ -13,10 +13,8 @@ using WpfDbApplication.Model;
 using WpfDbApplication.Services;
 using WpfDbApplication.Stores;
 using WpfDbApplication.ViewModels;
-using WpfDbApplication.Services.AccountProviders;
-using WpfDbApplication.Services.AccountCreators;
-using WpfDbApplication.Services.AccountConflictValidators;
-using WpfDbApplication.Services.AccountUpdaters;
+using WpfDbApplication.Repository;
+using WpfDbApplication.Facade;
 
 namespace WpfDbApplication
 {
@@ -31,16 +29,21 @@ namespace WpfDbApplication
 
         private readonly NavigationStore navigationStore;
 
-        private readonly BankSystemContextFactory bankSystemContextFactory;
+        private readonly IUnitOfWork uof;
+
+        private readonly AccountFacade accountFacade;
+
+        private readonly IAccountRepository accountRepository;
+
+        private readonly ICardRepository cardRepository;
 
         public App()
         {
-            bankSystemContextFactory = new BankSystemContextFactory(CONNECTION_STRING);
-            IAccountProvider accountProvider = new DatabaseAccountProvider(bankSystemContextFactory);
-            IAccountCreator accountCreator = new DatabaseAccountCreator(bankSystemContextFactory);
-            IAccountConflictValidator accountConflictValidator = new DatabaseAccountConflictValidator(bankSystemContextFactory);
-            IAccountUpdater accountUpdater = new DatabaseAccountUpdater(bankSystemContextFactory);
-            AccountList accountList = new AccountList(accountProvider, accountCreator, accountConflictValidator, accountUpdater);
+            uof = new UnitOfWork(new DatabaseContextFactory());
+            accountRepository = new AccountRepository(uof);
+            cardRepository = new CardRepository(uof);
+            accountFacade = new AccountFacade(accountRepository, cardRepository, uof);
+            AccountList accountList = new AccountList(accountFacade);
 
             this.bank = new Bank("KB", accountList);
             this.navigationStore = new NavigationStore();
@@ -48,11 +51,6 @@ namespace WpfDbApplication
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            DbContextOptions options = new DbContextOptionsBuilder().UseSqlite(CONNECTION_STRING).Options;
-            using (BankSystemContext dbContext = new BankSystemContext(options))
-            {
-                dbContext.Database.Migrate();
-            }
 
 
 

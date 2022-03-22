@@ -4,10 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WpfDbApplication.Exceptions;
-using WpfDbApplication.Services.AccountCreators;
-using WpfDbApplication.Services.AccountProviders;
-using WpfDbApplication.Services.AccountConflictValidators;
-using WpfDbApplication.Services.AccountUpdaters;
+using WpfDbApplication.Facade;
+using WpfDbApplication.Services.Helpers;
 
 namespace WpfDbApplication.Model
 {
@@ -15,17 +13,11 @@ namespace WpfDbApplication.Model
     public class AccountList
     {
 
-        private readonly IAccountProvider accountProvider;
-        private readonly IAccountCreator accountCreator;
-        private readonly IAccountConflictValidator accountConflictValidator;
-        private readonly IAccountUpdater accountUpdater;
+        private readonly AccountFacade accountFacade; 
 
-        public AccountList(IAccountProvider accountProvider, IAccountCreator accountCreator, IAccountConflictValidator accountConflictValidator, IAccountUpdater accountUpdater)
+        public AccountList(AccountFacade accountFacade)
         {
-            this.accountProvider = accountProvider;
-            this.accountCreator = accountCreator;
-            this.accountConflictValidator = accountConflictValidator;
-            this.accountUpdater = accountUpdater;
+            this.accountFacade = accountFacade;
         }
 
         //public IEnumerable<Account> GetBankAccountsForUser(string email)
@@ -36,33 +28,33 @@ namespace WpfDbApplication.Model
 
         public async Task<IEnumerable<Account>> GetAllAccounts()
         {
-            return await accountProvider.GetAllAccounts();
+            return await accountFacade.GetAll();
         }
 
         public async Task<Account> GetAccountByUuid(string uuid)
         {
-            return await accountProvider.GetAccountByUuid(uuid);
+            return await accountFacade.GetByUuid(uuid);
         }
 
         public async Task createAccount(Account account)
         {
 
-            Account conflictingAccount = await accountConflictValidator.GetConflictingAccount(account);
+            //Account conflictingAccount = await accountConflictValidator.GetConflictingAccount(account);
 
-            if(conflictingAccount != null)
-            {
-                throw new AccountAlreadyExistsException(conflictingAccount, account);
+            //if(conflictingAccount != null)
+            //{
+            //    throw new AccountAlreadyExistsException(conflictingAccount, account);
 
-            }
+            //}
 
-            await accountCreator.CreateAccount(account);
+        await accountFacade.Save(account);
 
         }
 
+
         public async Task sendMoneyToAccount(string uuid, decimal money)
         {
-
-           await accountUpdater.UpdateAccountMoney(uuid, money);
+            await accountFacade.Update(uuid, money);
 
         }
 

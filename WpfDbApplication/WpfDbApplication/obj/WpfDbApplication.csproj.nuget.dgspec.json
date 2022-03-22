@@ -46,6 +46,10 @@
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "dependencies": {
+            "DatabaseWrapper": {
+              "target": "Package",
+              "version": "[4.0.0.1, )"
+            },
             "MahApps.Metro": {
               "target": "Package",
               "version": "[2.4.9, )"
@@ -75,6 +79,14 @@
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
               "version": "[5.0.4, )"
+            },
+            "SqlKata": {
+              "target": "Package",
+              "version": "[2.3.7, )"
+            },
+            "System.Data.SQLite": {
+              "target": "Package",
+              "version": "[1.0.115.5, )"
             }
           },
           "imports": [

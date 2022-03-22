@@ -8,20 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\**" />
-    <EmbeddedResource Remove="Migrations\**" />
-    <None Remove="Migrations\**" />
-    <Page Remove="Migrations\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="Resources\card.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="Migrations\20220320201025_Initial.cs" />
-    <Compile Include="Migrations\20220320201025_Initial.Designer.cs" />
-    <Compile Include="Migrations\BankSystemContextModelSnapshot.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="DatabaseWrapper" Version="4.0.0.1" />
     <PackageReference Include="MahApps.Metro" Version="2.4.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.14" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.14" />
@@ -41,6 +29,8 @@
     </PackageReference>
     <PackageReference Include="MySql.EntityFrameworkCore" Version="5.0.10" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="5.0.4" />
+    <PackageReference Include="SqlKata" Version="2.3.7" />
+    <PackageReference Include="System.Data.SQLite" Version="1.0.115.5" />
   </ItemGroup>
 
   <ItemGroup>
