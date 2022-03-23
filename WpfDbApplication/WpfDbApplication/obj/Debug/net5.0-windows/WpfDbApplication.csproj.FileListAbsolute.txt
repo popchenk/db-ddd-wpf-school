@@ -49,3 +49,7 @@ C:\Users\aando\Documents\GitHub\db-ddd-wpf-school\WpfDbApplication\WpfDbApplicat
 C:\Users\aando\Documents\GitHub\db-ddd-wpf-school\WpfDbApplication\WpfDbApplication\obj\Debug\net5.0-windows\Views\ListAccountsView.baml
 C:\Users\aando\Documents\GitHub\db-ddd-wpf-school\WpfDbApplication\WpfDbApplication\obj\Debug\net5.0-windows\Views\MakeAccountView.baml
 C:\Users\aando\Documents\GitHub\db-ddd-wpf-school\WpfDbApplication\WpfDbApplication\obj\Debug\net5.0-windows\App.baml
+C:\Users\aando\Documents\GitHub\db-ddd-wpf-school\WpfDbApplication\WpfDbApplication\bin\Debug\net5.0-windows\ControlzEx.dll
+C:\Users\aando\Documents\GitHub\db-ddd-wpf-school\WpfDbApplication\WpfDbApplication\bin\Debug\net5.0-windows\MahApps.Metro.dll
+C:\Users\aando\Documents\GitHub\db-ddd-wpf-school\WpfDbApplication\WpfDbApplication\bin\Debug\net5.0-windows\Microsoft.Xaml.Behaviors.dll
+C:\Users\aando\Documents\GitHub\db-ddd-wpf-school\WpfDbApplication\WpfDbApplication\bin\Debug\net5.0-windows\de\MahApps.Metro.resources.dll

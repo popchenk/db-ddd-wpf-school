@@ -46,9 +46,9 @@
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "dependencies": {
-            "Microsoft.EntityFrameworkCore": {
+            "MahApps.Metro": {
               "target": "Package",
-              "version": "[5.0.14, )"
+              "version": "[2.4.9, )"
             },
             "MySql.EntityFrameworkCore": {
               "target": "Package",
