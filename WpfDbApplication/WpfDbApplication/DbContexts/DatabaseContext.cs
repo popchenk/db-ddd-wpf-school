@@ -15,10 +15,6 @@ namespace WpfDbApplication.DbContexts
         private readonly string connectionString;
         private SQLiteConnection connection;
 
-        /// <summary>
-        /// Get connection string inside constructor.
-        /// So when the class will be initialized then connection string will be automatically get from web.config
-        /// </summary>
         public DatabaseContext()
         {
             //take the string from cfg
