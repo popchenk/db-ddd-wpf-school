@@ -31,11 +31,11 @@ namespace WpfDbApplication.ViewModels
 
             MakeAccountCommand = new NavigateCommand(makeAccountNavigationService);
 
-            UpdateReservations();
+            UpdateAccounts();
 
         }
 
-        private void UpdateReservations()
+        private void UpdateAccounts()
         {
             accounts.Clear();
 
