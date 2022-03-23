@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WpfDbApplication.Repository
 {
-    public interface IRepository<T> where T : Entity, IAggregateRoot
+    public interface IRepository<T> where T : Entity
     {
         Task<int> Insert(T entity, string insertSql, SQLiteTransaction sqlTransaction);
         Task Update(T entity, string updateSql, SQLiteTransaction sqlTransaction);

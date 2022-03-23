@@ -7,7 +7,7 @@ using WpfDbApplication.Repository;
 
 namespace WpfDbApplication.DTOs
 {
-    public class AccountDto : Entity, IAggregateRoot
+    public class AccountDto : Entity
     {
         public int id { get; set; }
         public string Uuid { get; set; }

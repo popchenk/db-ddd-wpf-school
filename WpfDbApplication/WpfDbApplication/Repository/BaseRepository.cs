@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace WpfDbApplication.Repository
 {
-    public abstract class BaseRepository<T> : IRepository<T> where T : Entity, IAggregateRoot, new()
+    public abstract class BaseRepository<T> : IRepository<T> where T : Entity, new()
     {
         protected SQLiteConnection _conn;
         protected readonly IUnitOfWork _uow;

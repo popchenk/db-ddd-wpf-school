@@ -7,7 +7,7 @@ using WpfDbApplication.Services.Helpers;
 
 namespace WpfDbApplication.DTOs
 {
-    public class CardDto : Entity, IAggregateRoot
+    public class CardDto : Entity
     {
         public int id { get; set; }
         public string cardNum { get; set; }

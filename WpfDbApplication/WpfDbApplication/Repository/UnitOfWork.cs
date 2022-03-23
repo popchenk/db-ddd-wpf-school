@@ -8,6 +8,7 @@ using WpfDbApplication.DbContexts;
 
 namespace WpfDbApplication.Repository
 {
+    // collects all transactions that repositories are using and make them into one single transaction
     public class UnitOfWork : IUnitOfWork, IDisposable
     {
         private IDatabaseContextFactory _factory;
