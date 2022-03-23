@@ -1,15 +1,21 @@
 # WPF DB
 
 Náplň hodiny:
-1) DbDataReader(SQLite) - nevýhody a výhody
-2) EF Core(SQLite) - nevýhody a výhody
-3) Prezentace a ukázka MVVM projektu s EF Core
-4) Samostatná práce (one page view) buď s orm nebo bez
+1) SQLite no ORM - nevýhody a výhody
+2) Programování projektu SQLite no ORM with Repo pattern(user activity diagram, mvvm)
+3) Feedback
 
-# 1) DbDataReader(SQLite)
+# 1) SQLite no ORM
+* embedded db (televize, kamery, hodinky...), version control systemy, analýza dat atd...
 * stáhnout https://github.com/popchenk/db-ddd-wpf-school/tree/main/WpfDbApplication
-* Install-Package System.Data.SQLite -Version 1.0.108
+* Stáhnout nugget package System.Data.SQLite(nějaká verze, které vám půjde)
 
-# 2) EF Core(SQLite)
-* stáhnout https://github.com/popchenk/db-ddd-wpf-school/tree/main/WpfDbApplication
-* Install-Package System.Data.SQLite -Version 1.0.108
+# 2) Programování projektu SQLite no ORM with Repo pattern (user activity diagram, mvvm)
+* User activity diagram
+* Stáhnout nugget package Mahapps.Metro(nějaká verze, které vám půjde)
+* Stage 1 (NO DB): https://github.com/popchenk/db-ddd-wpf-school/tree/main/WpfDbApplication
+* Stáhnout nugget package System.Data.SQLite(nějaká verze, které vám půjde)
+* Stage 2 (DB repo pattern): https://github.com/popchenk/db-ddd-wpf-school/tree/main/WpfDbApplication
+* Stage 2 (Optional ORM): https://github.com/popchenk/db-ddd-wpf-school/tree/main/WpfDbApplication
+
+# 3) Feedback
