@@ -15,9 +15,7 @@ using System.Windows.Shapes;
 
 namespace WpfDbApplication.Views
 {
-    /// <summary>
-    /// Interakční logika pro ListAccountsView.xaml
-    /// </summary>
+
     public partial class ListAccountsView : UserControl
     {
         public ListAccountsView()

@@ -15,9 +15,7 @@ using System.Windows.Shapes;
 
 namespace WpfDbApplication.Views
 {
-    /// <summary>
-    /// Interakční logika pro MakeAccountView.xaml
-    /// </summary>
+
     public partial class MakeAccountView : UserControl
     {
         public MakeAccountView()
