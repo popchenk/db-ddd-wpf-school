@@ -11,7 +11,8 @@ Náplň hodiny:
 * Stáhnout nugget package System.Data.SQLite(nějaká verze, které vám půjde)
 
 # 2) Programování projektu SQLite no ORM with Repo pattern (user activity diagram, mvvm)
-* User activity diagram
+* Use case diagram
+![Alt text](/resources/activity_diagram.jpg?raw=true "Use Case diagram")
 * Stáhnout nugget package Mahapps.Metro(nějaká verze, které vám půjde)
 * Stage 0-0 (ONLY VIEWS): https://github.com/popchenk/db-ddd-wpf-school/blob/main/School-Stage-0-0.rar
 * Stage 0-1 (NO DB): https://github.com/popchenk/db-ddd-wpf-school/blob/main/School-Stage-0-1.rar
