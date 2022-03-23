@@ -58,7 +58,7 @@ namespace WpfDbApplication.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/WpfDbApplication;component/views/listaccountsview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/WpfDbApplication;V1.0.0.0;component/views/listaccountsview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\ListAccountsView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

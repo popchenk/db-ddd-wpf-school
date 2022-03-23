@@ -53,7 +53,7 @@ namespace WpfDbApplication.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/WpfDbApplication;component/views/creditcarddetailview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/WpfDbApplication;V1.0.0.0;component/views/creditcarddetailview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\CreditCardDetailView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
