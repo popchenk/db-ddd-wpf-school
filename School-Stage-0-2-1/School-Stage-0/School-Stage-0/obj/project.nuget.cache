@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "/mlzUceqUkuqGBarCzc0zELutzarxjUJIacjWM3MhpAljIV2tzgBEtLZVDZOh9fFK6bzXzfE3pe81NdoX2VD1Q==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\aando\\source\\repos\\School-Stage-0\\School-Stage-0\\School-Stage-0.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\aando\\.nuget\\packages\\controlzex\\4.4.0\\controlzex.4.4.0.nupkg.sha512",
+    "C:\\Users\\aando\\.nuget\\packages\\mahapps.metro\\2.4.9\\mahapps.metro.2.4.9.nupkg.sha512",
+    "C:\\Users\\aando\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.19\\microsoft.xaml.behaviors.wpf.1.1.19.nupkg.sha512",
+    "C:\\Users\\aando\\.nuget\\packages\\system.text.json\\4.7.2\\system.text.json.4.7.2.nupkg.sha512"
+  ],
+  "logs": []
+}

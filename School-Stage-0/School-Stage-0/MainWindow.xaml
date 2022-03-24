@@ -1,0 +1,21 @@
+﻿<mah:MetroWindow x:Class="School_Stage_0.MainWindow"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                xmlns:local="clr-namespace:School_Stage_0" 
+                xmlns:Views="clr-namespace:School_Stage_0.Views"
+                mc:Ignorable="d"
+                xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                 Title="Bank System"
+                 Width="800"
+                 Height="450"
+                 WindowStartupLocation="CenterScreen" FontSize="14">
+    <Grid Margin="20 10" MaxWidth="600">
+
+
+        <Views:MakeAccountView/>
+
+
+    </Grid>
+</mah:MetroWindow>
